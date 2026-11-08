@@ -5,4 +5,5 @@ export default interface Communique{
     createdAt: Date;
     visible: boolean;
     image: string;
+    content: string;
 }

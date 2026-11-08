@@ -6,7 +6,8 @@
             "slug": "bonjour",
             "createdAt": null,
             "visible": true,
-            "image": "/favicon.ico"
+            "image": "/favicon.ico",
+            "content":"haha"
         }
     ]
 }
