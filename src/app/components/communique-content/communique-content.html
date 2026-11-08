@@ -1,7 +1,7 @@
+<a [routerLink]="['/']">&lt;- Retour</a>
 @if (comm(); as c){
     <h2>{{c.title}}</h2>
-    <div>
-        {{c.content}}
+    <div [innerHTML]="parsed()">
     </div>
     <span class="date">{{c.createdAt | date: 'mediumDate'}}</span>
 } @else{
