@@ -1,14 +1,27 @@
 <a [routerLink]="['/a']">&lt;- Retour</a>
 
+@if (loading()){
+    <span class="loading">Chargement</span>
+} @else{
+    @if (error()){
+        <span class="error">{{error()}}</span>
+    }
+}
 <form [formGroup]="commForm" (ngSubmit)="onSubmit()">
     <div>
         <label for="title">Titre</label>
         <input type="text" id="title" formControlName="title">
+        @if (commForm.controls.title.invalid && commForm.controls.title.touched){
+            <span class="error">Merci de mettre un titre. Alphanumerique seulement</span>
+        }
     </div>
     <div>
         <label for="content">Texte</label>
         <textarea placeholder="content" id="content" formControlName="content">
         </textarea>
+        @if (commForm.controls.title.invalid && commForm.controls.title.touched){
+            <span class="error">Merci d'écrire le communiqué en markdown</span>
+        }
     </div>
     <div>
         <label for="image">Image</label>

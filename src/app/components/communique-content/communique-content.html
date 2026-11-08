@@ -1,4 +1,7 @@
 <a [routerLink]="['/']">&lt;- Retour</a>
+@if (loading()){
+    <span class="loading">Chargement</span>
+}
 @if (comm(); as c){
     <h2>{{c.title}}</h2>
     <div [innerHTML]="parsed()">

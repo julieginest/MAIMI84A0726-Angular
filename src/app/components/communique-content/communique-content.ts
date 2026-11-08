@@ -14,12 +14,16 @@ export class CommuniqueContent {
   id = input.required<string>()
   private readonly commService = inject(CommuniquesService)
 
+  protected readonly loading = this.commService.loading;
+  protected readonly error = this.commService.error;
+
+
   protected readonly parsed = computed(() => {
     const c = this.commService.communiquesList().find(c => c.id === Number(this.id()))
     return marked.parse(c?.content ?? "")
   })
 
   protected readonly comm = computed(() =>
-    this.commService.communiquesList().find(c => c.id === Number(this.id()))
+    this.commService.communiquesList().find(c => c.slug === this.id())
   )
 }

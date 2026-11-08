@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input } from '@angular/core';
+import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommuniquesService } from '../communiques.service';
@@ -25,9 +25,16 @@ export class CommuniqueForm {
 
   id = input<string>();
 
+
+  
+  
   private readonly fb = inject(FormBuilder)
   private readonly commService = inject(CommuniquesService)
   private readonly router = inject(Router)
+
+  protected readonly loading = this.commService.loading;
+  protected readonly error = this.commService.error;
+  private readonly submitError = signal<string | null>(null);
 
   protected readonly editionMode = computed(() => this.id() != undefined);
   protected readonly currentComm = computed(() => 
@@ -54,9 +61,10 @@ export class CommuniqueForm {
       this.commService.updateComm(Number(id),{title, content, image})
       this.router.navigate(['/']);
     }else{
-      this.commService.addComm({title, image, content}).subscribe(()=>{
-        this.router.navigate(['/'])
-      })
+      this.commService.addComm({title, image, content})
+      this.router.navigate(['/'])
     }
   }
+
+  
 }
