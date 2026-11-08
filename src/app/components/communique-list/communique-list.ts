@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommuniqueCard } from '../communique-card/communique-card';
 import { CommuniquesService } from '../communiques.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [CommuniqueCard],
+  imports: [CommuniqueCard, RouterLink],
   selector: 'app-communique-list',
   styleUrl: './communique-list.scss',
   templateUrl: './communique-list.html',
@@ -18,6 +18,10 @@ export class CommuniqueList {
     this.commService.toggleVisibility(commId)
   }
 
+  protected onDelete(commId: number): void {
+    this.commService.deleteComm(commId)
+  }
+
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {
     this.route.url.subscribe(urlSegments => {
@@ -26,4 +30,6 @@ export class CommuniqueList {
   }
 
   protected readonly comms = this.commService.communiquesList;
+  protected readonly loading = this.commService.loading;
+  protected readonly error = this.commService.error;
 }

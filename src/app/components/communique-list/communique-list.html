@@ -1,8 +1,22 @@
 <h2>All of them</h2>
+@if (this.lastSlugSegment=="a"){
+    <a [routerLink]="['/','new']">
+        <button>Créer</button>
+    </a>
+}
 <div class="List">
-    @for (comm of comms(); track comm.id){
-        @if (comm.visible || lastSlugSegment == "a"){
-            <app-communique-card [comm]="comm" [isA]="lastSlugSegment == 'a'" (toggleVisibility)="onToggleVisibility($event)"/>
+    @if (loading()){
+        <span class="loading">Chargement</span>
+    } @else{
+        @if (error()){
+            <span class="error">{{error()}}</span>
+        } @else {
+            @for (comm of comms().filter(c => c.visible || this.lastSlugSegment=="a"); track comm.id){
+                <app-communique-card [comm]="comm" [isA]="lastSlugSegment == 'a'" (toggleVisibility)="onToggleVisibility($event)" (delete)="onDelete($event)" />
+            } @empty {
+                <span class="empty">Vide</span>
+            }
         }
     }
+    
 </div>
