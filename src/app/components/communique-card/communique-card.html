@@ -1,8 +1,10 @@
-<div class="comm">
-    <div class="imageDiv">
-        <img src={{comm().image}} alt="">
+<a [routerLink]="[comm().id]">
+    <div class="comm">
+        <div class="imageDiv">
+            <img src={{comm().image}} alt="">
+        </div>
+        <h3>{{comm().title}}</h3>
+        <p>{{comm().createdAt | date: 'mediumDate'}}</p>
+    
     </div>
-    <h3>{{comm().title}}</h3>
-    <p>{{comm().createdAt | date: 'mediumDate'}}</p>
-
-</div>
+</a>
