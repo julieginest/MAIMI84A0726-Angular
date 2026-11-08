@@ -1,7 +1,8 @@
 export default interface Communique{
     id: number;
-    titre: string;
+    title: string;
     slug: string;
     createdAt: Date;
     visible: boolean;
+    image: string;
 }

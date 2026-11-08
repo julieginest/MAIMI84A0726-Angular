@@ -1,10 +1,12 @@
 {
     "communiques":[
         {
+            "id": 1,
             "title": "Bonjour",
-            "publicationDate": "date",
-            "content": "Youpi",
-            "image":"favicon.ico"
+            "slug": "bonjour",
+            "createdAt": null,
+            "visible": true,
+            "image": "/favicon.ico"
         }
     ]
 }
