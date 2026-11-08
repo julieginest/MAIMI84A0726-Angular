@@ -1,4 +1,4 @@
-<a [routerLink]="isA() ? ['/', comm().id, 'e'] : ['/', comm().id]" >
+<a [routerLink]="isA() ? ['/', comm().id, 'e'] : ['/', comm().slug]" >
 <div class="comm">
     <div class="imageDiv">
         <img [src]="comm().image" alt="">
@@ -15,6 +15,9 @@
                 } @else {
                     Rendre visible
                 }
+            </button>
+            <button (click)="onRemoveClick($event)">
+                Supprimer
             </button>
         }
     </div>

@@ -14,10 +14,16 @@ export class CommuniqueCard {
   comm = input.required<Communique>();
   isA = input.required<boolean>();
   toggleVisibility = output<number>();
+  delete = output<number>();
   
   protected onToggleClick(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
     this.toggleVisibility.emit(this.comm().id)
+  }
+  protected onRemoveClick(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.delete.emit(this.comm().id)
   }
 }
