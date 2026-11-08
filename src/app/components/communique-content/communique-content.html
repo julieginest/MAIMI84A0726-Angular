@@ -1,12 +1,13 @@
 <a [routerLink]="['/']">&lt;- Retour</a>
 @if (loading()){
     <span class="loading">Chargement</span>
-}
-@if (comm(); as c){
-    <h2>{{c.title}}</h2>
-    <div [innerHTML]="parsed()">
-    </div>
-    <span class="date">{{c.createdAt | date: 'mediumDate'}}</span>
-} @else{
-    <h2 class="error">Not Found</h2>
+} @else {
+    @if (comm(); as c){
+        <h2>{{c.title}}</h2>
+        <div [innerHTML]="parsed()">
+        </div>
+        <span class="date">{{c.createdAt | date: 'mediumDate'}}</span>
+    } @else{
+        <h2 class="error">Not Found</h2>
+    }
 }
