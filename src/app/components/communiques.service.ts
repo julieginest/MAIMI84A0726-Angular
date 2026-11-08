@@ -1,6 +1,7 @@
 import { inject, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Communique from '../types/communique';
+import { tap } from 'rxjs';
 
 
 @Service()
@@ -20,5 +21,22 @@ export class CommuniquesService {
     this.http.get<Communique[]>(this.apiUrl).subscribe(communiques => {
       this.communiquesSignal.set(communiques)
     })
+  }
+
+  addComm(comm: Omit<Communique,'id' | 'createdAt' | 'visible' | 'slug'>) {
+    const id = Math.max(0, ...this.communiquesList().map(c => c.id))+1;
+    const slug = comm.title.replaceAll(" ","-")
+    const newComm : Communique = {
+      ...comm,
+      id,
+      createdAt: new Date().toISOString(),
+      visible: false,
+      slug
+    }
+    return this.http.post<Communique>(this.apiUrl, newComm).pipe(
+      tap(
+        c => this.communiquesSignal.update(comm => [...comm, c])
+      )
+    )
   }
 }
