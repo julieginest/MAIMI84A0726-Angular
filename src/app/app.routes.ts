@@ -5,6 +5,8 @@ import { CommuniqueForm } from './components/communique-form/communique-form';
 
 export const routes: Routes = [
     {path:"", component:CommuniqueList},
+    {path:"a", component:CommuniqueList},
     {path:"new", component:CommuniqueForm},
+    {path:":id/e", component:CommuniqueForm},
     {path:":id", component:CommuniqueContent},
 ];

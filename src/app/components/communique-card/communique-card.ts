@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import Communique from '../../types/communique';
 import { RouterLink } from '@angular/router';
@@ -12,4 +12,12 @@ import { RouterLink } from '@angular/router';
 })
 export class CommuniqueCard {
   comm = input.required<Communique>();
+  isA = input.required<boolean>();
+  toggleVisibility = output<number>();
+  
+  protected onToggleClick(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.toggleVisibility.emit(this.comm().id)
+  }
 }

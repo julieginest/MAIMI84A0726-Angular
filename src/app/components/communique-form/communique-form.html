@@ -1,3 +1,5 @@
+<a [routerLink]="['/a']">&lt;- Retour</a>
+
 <form [formGroup]="commForm" (ngSubmit)="onSubmit()">
     <div>
         <label for="title">Titre</label>
@@ -16,7 +18,7 @@
     <button type="submit">
         Ajouter
     </button>
-    <a routerLink="/">
+    <a routerLink="/a">
         <button>Retour</button>
     </a>
 </form>

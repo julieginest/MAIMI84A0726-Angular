@@ -1,10 +1,21 @@
-<a [routerLink]="[comm().id]">
-    <div class="comm">
-        <div class="imageDiv">
-            <img src={{comm().image}} alt="">
-        </div>
-        <h3>{{comm().title}}</h3>
-        <p>{{comm().createdAt | date: 'mediumDate'}}</p>
-    
+<a [routerLink]="isA() ? ['/', comm().id, 'e'] : ['/', comm().id]" >
+<div class="comm">
+    <div class="imageDiv">
+        <img [src]="comm().image" alt="">
+    </div>
+
+        <h3>{{ comm().title }}</h3>
+        
+        <p>{{ comm().createdAt | date:'mediumDate' }}</p>
+        
+        @if (isA()) {
+            <button (click)="onToggleClick($event)">
+                @if (comm().visible) {
+                    Cacher
+                } @else {
+                    Rendre visible
+                }
+            </button>
+        }
     </div>
 </a>

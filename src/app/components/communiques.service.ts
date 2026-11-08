@@ -50,4 +50,11 @@ export class CommuniquesService {
         }
       })
   }
+
+  toggleVisibility(commId: number) : void {
+    const comm = this.communiquesSignal().find(c => c.id == commId);
+    if (!comm) return;
+    const visible = !comm.visible
+    this.updateComm(commId, {visible:visible})
+  }
 }

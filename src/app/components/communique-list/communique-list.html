@@ -1,6 +1,8 @@
 <h2>All of them</h2>
 <div class="List">
     @for (comm of comms(); track comm.id){
-        <app-communique-card [comm]="comm" />
+        @if (comm.visible || lastSlugSegment == "a"){
+            <app-communique-card [comm]="comm" [isA]="lastSlugSegment == 'a'" (toggleVisibility)="onToggleVisibility($event)"/>
+        }
     }
 </div>
