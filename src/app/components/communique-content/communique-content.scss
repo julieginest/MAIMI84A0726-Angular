@@ -1,0 +1,9 @@
+h2{
+    color: black;
+    &.error{
+        color: red;
+    }
+}
+span.date{
+    color: lightgray;
+}
