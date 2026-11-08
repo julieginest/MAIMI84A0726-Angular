@@ -1,0 +1,22 @@
+<form [formGroup]="commForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="title">Titre</label>
+        <input type="text" id="title" formControlName="title">
+    </div>
+    <div>
+        <label for="content">Texte</label>
+        <textarea placeholder="content" id="content" formControlName="content">
+        </textarea>
+    </div>
+    <div>
+        <label for="image">Image</label>
+        <input type="text" id="image" formControlName="image">
+    </div>
+
+    <button type="submit">
+        Ajouter
+    </button>
+    <a routerLink="/">
+        <button>Retour</button>
+    </a>
+</form>
