@@ -1,0 +1,15 @@
+div.comm{
+    width: 21rem;
+    height: 29.7rem;
+    border: 1px black solid;
+    border-radius: 3%;
+    .imageDiv{
+        width: 21rem;
+        height: 21rem;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

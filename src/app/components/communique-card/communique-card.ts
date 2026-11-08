@@ -1,10 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import Communique from '../../types/communique';
 
 @Component({
   selector: 'app-communique-card',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './communique-card.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './communique-card.scss',
 })
-export class CommuniqueCard {}
+export class CommuniqueCard {
+  comm = input.required<Communique>();
+}
