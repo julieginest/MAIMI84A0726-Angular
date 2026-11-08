@@ -2,6 +2,7 @@ import { inject, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Communique from '../types/communique';
 import { tap } from 'rxjs';
+import CommuniqueUpdate from '../types/communique-update';
 
 
 @Service()
@@ -38,5 +39,15 @@ export class CommuniquesService {
         c => this.communiquesSignal.update(comm => [...comm, c])
       )
     )
+  }
+
+  updateComm(commId: number, comm: CommuniqueUpdate){
+    return this.http
+      .patch<Communique>(`${this.apiUrl}/${commId}`, comm)
+      .subscribe({
+        next: u => {
+          this.communiquesSignal.update(comms => comms.map(c => (c.id === commId ? u : c)))
+        }
+      })
   }
 }
