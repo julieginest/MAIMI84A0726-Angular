@@ -1,0 +1,86 @@
+h2 {
+    color: #222;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+// Bouton de création
+a {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+
+    button {
+        padding: 0.7rem 1.4rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 0.4rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+// Liste des communiqués
+.List {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    align-items: start;
+    margin-top: 1rem;
+
+    app-communique-card {
+        display: block;
+    }
+}
+
+// États de la page
+.loading,
+.error,
+.empty {
+    display: block;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.loading {
+    color: #888;
+}
+
+.error {
+    color: #dc3545;
+    background-color: #fff0f0;
+    border-radius: 0.5rem;
+}
+
+.empty {
+    color: #999;
+    font-style: italic;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .List {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .List {
+        grid-template-columns: 1fr;
+    }
+}

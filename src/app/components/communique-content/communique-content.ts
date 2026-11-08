@@ -19,7 +19,7 @@ export class CommuniqueContent {
 
 
   protected readonly parsed = computed(() => {
-    const c = this.commService.communiquesList().find(c => c.id === Number(this.id()))
+    const c = this.commService.communiquesList().find(c => c.slug === this.id())
     return marked.parse(c?.content ?? "")
   })
 

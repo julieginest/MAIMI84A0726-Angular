@@ -59,10 +59,10 @@ export class CommuniqueForm {
     const id = this.id()
     if(id){
       this.commService.updateComm(Number(id),{title, content, image})
-      this.router.navigate(['/']);
+      this.router.navigate(['/','a']);
     }else{
       this.commService.addComm({title, image, content})
-      this.router.navigate(['/'])
+      this.router.navigate(['/','a'])
     }
   }
 

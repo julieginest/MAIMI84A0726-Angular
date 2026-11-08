@@ -1,9 +1,98 @@
-h2{
-    color: black;
-    &.error{
-        color: red;
+a {
+    display: inline-block;
+    color: #555;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: black;
+        text-decoration: underline;
     }
 }
-span.date{
+
+.loading {
+    display: block;
+    color: #888;
+    font-style: italic;
+    margin: 1rem 0;
+
+    &::after {
+        content: "...";
+        animation: dots 1.5s infinite;
+    }
+}
+
+h2 {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
+    &.error {
+        color: #dc3545;
+        text-align: center;
+        margin-top: 3rem;
+    }
+}
+
+div[innerHTML] {
+    line-height: 1.7;
+    color: #333;
+    font-size: 1rem;
+    margin: 1.5rem 0;
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+    }
+
+    h1, h2, h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: underline;
+    }
+
+    blockquote {
+        border-left: 4px solid #ccc;
+        padding-left: 1rem;
+        color: #666;
+        margin: 1rem 0;
+    }
+
+    pre {
+        background: #f4f4f4;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+    }
+}
+
+span.date {
+    display: block;
     color: lightgray;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+    padding-top: 0.8rem;
+}
+
+@keyframes dots {
+    0%, 20% {
+        content: ".";
+    }
+    40%, 60% {
+        content: "..";
+    }
+    80%, 100% {
+        content: "...";
+    }
 }
