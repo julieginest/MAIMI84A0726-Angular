@@ -1,11 +1,15 @@
 # MAIMI84A0726-Angular
-Tout est sur master
-## json-server
+Everything is on master
+## Starting
+### json-server
 ```bash
 npm run api
 ```
 
-## start server
+### start server
 ```bash
 npm run start
 ```
+## Some infos
+User view: [http://localhost:4200/](http://localhost:4200/)    
+Admin view: [http://localhost:4200/a](http://localhost:4200/a)
